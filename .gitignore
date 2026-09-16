@@ -1,0 +1,18 @@
+# System files
+.DS_STORE
+Thumbs.db
+
+
+# Logs
+*.log
+
+# temp files
+*.tmp
+*.temp
+
+
+#enviroment variables
+.env
+.env.*
+
+
