@@ -47,52 +47,83 @@
       <section class="section" id="popular">
         <h2>Популярные товары</h2>
 
-        <article class="product-card">
-          <h3>Товар 1</h3>
-          <p>Краткое описание учебного товара.</p>
-          <p>Цена: 1000 руб.</p>
-          <button
-            class="button product-card__button"
-            type="button"
-            data-product="Товар 1"
-          >
-            Заказать
-          </button>
-        </article>
+        <div class="product-grid">
+          <article class="product-card">
+            <span class="product-card__badge">Хит</span>
+            <div
+              class="product-card__img"
+              role="img"
+              aria-label="Упаковка товара 1"
+            >
+              Фото товар 1
+            </div>
+            <h3 class="product-card__title">Товар 1</h3>
+            <p class="product-card__description">
+              Краткое описание учебного товара.
+            </p>
+            <p class="product-card__price">1000 руб.</p>
+            <button
+              class="button product-card__button"
+              type="button"
+              data-product="Товар 1"
+            >
+              Заказать
+            </button>
+          </article>
 
-        <article class="product-card">
-          <h3>Товар 2</h3>
-          <p>Краткое описание учебного товара.</p>
-          <p>Цена: 1500 руб.</p>
-          <button
-            class="button product-card__button"
-            type="button"
-            data-product="Товар 2"
-          >
-            Заказать
-          </button>
-        </article>
+          <article class="product-card">
+            <span class="product-card__badge">Новинка</span>
+            <div
+              class="product-card__img"
+              role="img"
+              aria-label="Упаковка товара 2"
+            >
+              Фото товар 2
+            </div>
+            <h3 class="product-card__title">Товар 2</h3>
+            <p class="product-card__description">
+              Краткое описание учебного товара.
+            </p>
+            <p class="product-card__price">1500 руб.</p>
+            <button
+              class="button product-card__button"
+              type="button"
+              data-product="Товар 2"
+            >
+              Заказать
+            </button>
+          </article>
 
-        <article class="product-card">
-          <h3>Товар 3</h3>
-          <p>Краткое описание учебного товара.</p>
-          <p>Цена: 2000 руб.</p>
-          <button
-            class="button product-card__button"
-            type="button"
-            data-product="Товар 3"
-          >
-            Заказать
-          </button>
-        </article>
+          <article class="product-card">
+            <span class="product-card__badge">Выгодно</span>
+            <div
+              class="product-card__img"
+              role="img"
+              aria-label="Корзина с товаром 3"
+            >
+              Фото товар 3
+            </div>
+            <h3 class="product-card__title">Товар 3</h3>
+            <p class="product-card__description">
+              Краткое описание учебного товара.
+            </p>
+            <p class="product-card__price">2000 руб.</p>
+            <button
+              class="button product-card__button"
+              type="button"
+              data-product="Товар 3"
+            >
+              Заказать
+            </button>
+          </article>
+        </div>
       </section>
 
       <aside class="aside-info">
         <h2>Информация для студентов</h2>
         <p>
-          На следующих практических занятиях этот проект будет расширяться:
-          появятся формы, модальное окно, дополнительные страницы, Flex/Grid,
-          БЭМ-структура и адаптивная версия сайта.
+          В проекте используются Flexbox, CSS Grid, БЭМ-структура компонентов и
+          разные виды позиционирования элементов.
         </p>
       </aside>
     </main>
@@ -110,11 +141,7 @@
         method="post"
         novalidate
       >
-        <input
-          id="selected-product"
-          name="selected-product"
-          type="hidden"
-        />
+        <input id="selected-product" name="selected-product" type="hidden" />
 
         <div class="form-field">
           <label for="order-name">Имя</label>
@@ -202,6 +229,10 @@
     <p class="success-message" id="success-message" hidden>
       Форма успешно отправлена!
     </p>
+
+    <a class="back-to-top" href="#" aria-label="Вернуться в начало страницы"
+      >↑</a
+    >
 
     <footer id="contacts">
       <p>&copy; 2026 Учебный проект. Все права защищены.</p>
