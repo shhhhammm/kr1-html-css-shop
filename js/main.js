@@ -10,6 +10,7 @@ orderButtons.forEach((button) => {
   button.addEventListener("click", () => {
     const productName = button.dataset.product;
 
+    successMessage.hidden = true;
     selectedProductInput.value = productName;
 
     orderDialog.showModal();
