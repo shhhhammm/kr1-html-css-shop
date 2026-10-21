@@ -9,6 +9,8 @@
     />
     <title>Каталог товаров — Учебный интернет-магазин</title>
     <link rel="stylesheet" href="css/style.css" />
+    <script src="js/main.js" defer></script>
+    <script src="js/catalog.js" defer></script>
   </head>
   <body>
     <header class="site-header">
@@ -23,6 +25,7 @@
             <li class="site-nav__item"><a class="site-nav__link" href="index.html#advantages">Преимущества</a></li>
             <li class="site-nav__item"><a class="site-nav__link" href="index.html#popular">Популярные товары</a></li>
             <li class="site-nav__item"><a class="site-nav__link" href="contacts.html#feedback">Обратная связь</a></li>
+            <li class="site-nav__item"><a class="site-nav__link" href="catalog.html#faq">Вопросы и ответы</a></li>
           </ul>
         </nav>
       </div>
@@ -35,98 +38,337 @@
       </nav>
 
       <section class="section">
-        <h1 class="section__title">Каталог товаров</h1>
+        <h1 class="section__title" id="catalog-title">Каталог товаров</h1>
         <p class="section__text">
           Здесь представлены учебные товары и поля для выбора категории и цены.
         </p>
       </section>
 
-      <section class="catalog-layout">
-        <aside class="catalog-filters">
-          <h2 class="catalog-filters__title">Фильтры</h2>
-
-          <form class="filters-form" action="#" method="get">
+      <div class="catalog-layout">
+        <aside class="catalog-filters" aria-labelledby="filters-title">
+          <h2 class="catalog-filters__title" id="filters-title">Фильтры</h2>
+          <form class="filters-form" id="catalog-filters" action="catalog.html" method="get" novalidate>
+            <div>
+              <label class="filters-form__label" for="product-search">Поиск товара</label>
+              <input class="filters-form__input" id="product-search" name="search" type="search" placeholder="Название или описание" />
+            </div>
             <fieldset class="filters-form__fieldset">
               <legend class="filters-form__legend">Категория</legend>
-
               <label class="filters-form__label">
-                <input class="filters-form__checkbox" type="checkbox" name="category" value="all" />
-                Все товары
+                <input class="filters-form__checkbox" type="checkbox" name="category" value="peripherals" /> Периферия
               </label>
-
               <label class="filters-form__label">
-                <input class="filters-form__checkbox" type="checkbox" name="category" value="popular" />
-                Популярные
+                <input class="filters-form__checkbox" type="checkbox" name="category" value="audio" /> Аудио
               </label>
-
               <label class="filters-form__label">
-                <input class="filters-form__checkbox" type="checkbox" name="category" value="new" />
-                Новинки
+                <input class="filters-form__checkbox" type="checkbox" name="category" value="workspace" /> Рабочее место
               </label>
+              <p class="filters-form__hint">Без отметок — все категории.</p>
             </fieldset>
-
             <fieldset class="filters-form__fieldset">
-              <legend class="filters-form__legend">Цена</legend>
-
-              <label class="filters-form__label" for="price-from">От</label>
-              <input
-                class="filters-form__input"
-                id="price-from"
-                name="price-from"
-                type="number"
-                min="0"
-                placeholder="0"
-              />
-
-              <label class="filters-form__label" for="price-to">До</label>
-              <input
-                class="filters-form__input"
-                id="price-to"
-                name="price-to"
-                type="number"
-                min="0"
-                placeholder="5000"
-              />
+              <legend class="filters-form__legend">Цена, руб.</legend>
+              <div class="filters-form__range">
+                <div>
+                  <label class="filters-form__label" for="price-from">От</label>
+                  <input class="filters-form__input" id="price-from" name="price-from" type="number" min="0" step="1" placeholder="0" />
+                </div>
+                <div>
+                  <label class="filters-form__label" for="price-to">До</label>
+                  <input class="filters-form__input" id="price-to" name="price-to" type="number" min="0" step="1" placeholder="Любая" />
+                </div>
+              </div>
             </fieldset>
-
             <button class="button button--primary" type="submit">Применить</button>
+            <button class="button button--secondary" type="reset">Сбросить фильтры</button>
           </form>
         </aside>
 
-        <section class="catalog-products">
-          <h2 class="catalog-products__title">Список товаров</h2>
-
-          <div class="products-grid">
-            <article class="product-card product-card--featured">
-              <h3 class="product-card__title">Товар 1</h3>
-              <p class="product-card__description">
-                Краткое описание учебного товара.
-              </p>
-              <p class="product-card__price">Цена: 1000 руб.</p>
-              <a class="button button--secondary product-card__button" href="index.html#product-1">Подробнее</a>
+        <section class="catalog-products" aria-labelledby="products-title">
+          <div class="catalog-products__toolbar">
+            <div>
+              <h2 class="catalog-products__title" id="products-title">Все товары</h2>
+              <p class="catalog-products__count" id="products-count" role="status" aria-live="polite" aria-atomic="true">Показано: 12 из 12</p>
+            </div>
+            <div class="catalog-products__sorting">
+              <label class="filters-form__label" for="product-sort">Сортировка</label>
+              <select class="filters-form__input" id="product-sort">
+                <option value="default">По умолчанию</option>
+                <option value="price-asc">Сначала дешевле</option>
+                <option value="price-desc">Сначала дороже</option>
+                <option value="name">По названию</option>
+              </select>
+            </div>
+          </div>
+          <div class="products-grid" id="catalog-grid">
+            <article class="product-card product-card--featured" id="product-1" data-category="peripherals" data-price="1000">
+              <span class="product-card__badge">Хит</span>
+              <div class="product-card__img" aria-hidden="true">🖱️</div>
+              <p class="product-card__category">Периферия</p>
+              <h3 class="product-card__title">Беспроводная мышь</h3>
+              <p class="product-card__description">Тихие кнопки, три режима чувствительности и USB-приёмник для ноутбука.</p>
+              <p class="product-card__price">1 000 руб.</p>
+              <button class="button button--primary product-card__button" type="button" data-product="Беспроводная мышь">Заказать</button>
             </article>
 
-            <article class="product-card">
-              <h3 class="product-card__title">Товар 2</h3>
-              <p class="product-card__description">
-                Краткое описание учебного товара.
-              </p>
-              <p class="product-card__price">Цена: 1500 руб.</p>
-              <a class="button button--secondary product-card__button" href="index.html#product-2">Подробнее</a>
+            <article class="product-card product-card--new" id="product-2" data-category="peripherals" data-price="1500">
+              <span class="product-card__badge">Новинка</span>
+              <div class="product-card__img" aria-hidden="true">⌨️</div>
+              <p class="product-card__category">Периферия</p>
+              <h3 class="product-card__title">Компактная клавиатура</h3>
+              <p class="product-card__description">Проводная клавиатура с русской раскладкой и компактным корпусом.</p>
+              <p class="product-card__price">1 500 руб.</p>
+              <button class="button button--primary product-card__button" type="button" data-product="Компактная клавиатура">Заказать</button>
             </article>
 
-            <article class="product-card">
-              <h3 class="product-card__title">Товар 3</h3>
-              <p class="product-card__description">
-                Краткое описание учебного товара.
-              </p>
-              <p class="product-card__price">Цена: 2000 руб.</p>
-              <a class="button button--secondary product-card__button" href="index.html#product-3">Подробнее</a>
+            <article class="product-card product-card--discount" id="product-3" data-category="audio" data-price="2000">
+              <span class="product-card__badge">−20%</span>
+              <div class="product-card__img" aria-hidden="true">🎧</div>
+              <p class="product-card__category">Аудио</p>
+              <h3 class="product-card__title">Наушники с микрофоном</h3>
+              <p class="product-card__description">Полноразмерная гарнитура для занятий, звонков и любимой музыки.</p>
+              <p class="product-card__old-price">Раньше: <del>2 500 руб.</del></p>
+              <p class="product-card__price">2 000 руб.</p>
+              <button class="button button--primary product-card__button" type="button" data-product="Наушники с микрофоном">Заказать</button>
+            </article>
+
+            <article class="product-card" id="product-4" data-category="peripherals" data-price="450">
+              <div class="product-card__img" aria-hidden="true">🖱️</div>
+              <p class="product-card__category">Периферия</p>
+              <h3 class="product-card__title">Коврик для мыши</h3>
+              <p class="product-card__description">Тканевая поверхность 30 × 25 см и нескользящее резиновое основание.</p>
+              <p class="product-card__price">450 руб.</p>
+              <button class="button button--primary product-card__button" type="button" data-product="Коврик для мыши">Заказать</button>
+            </article>
+
+            <article class="product-card product-card--new" id="product-5" data-category="peripherals" data-price="3200">
+              <span class="product-card__badge">Новинка</span>
+              <div class="product-card__img" aria-hidden="true">📷</div>
+              <p class="product-card__category">Периферия</p>
+              <h3 class="product-card__title">Веб-камера Full HD</h3>
+              <p class="product-card__description">Видео 1080p, встроенный микрофон и крепление на монитор.</p>
+              <p class="product-card__price">3 200 руб.</p>
+              <button class="button button--primary product-card__button" type="button" data-product="Веб-камера Full HD">Заказать</button>
+            </article>
+
+            <article class="product-card" id="product-6" data-category="peripherals" data-price="1800">
+              <div class="product-card__img" aria-hidden="true">🔌</div>
+              <p class="product-card__category">Периферия</p>
+              <h3 class="product-card__title">USB-разветвитель</h3>
+              <p class="product-card__description">Четыре USB-порта для подключения периферии к одному разъёму.</p>
+              <p class="product-card__price">1 800 руб.</p>
+              <button class="button button--primary product-card__button" type="button" data-product="USB-разветвитель">Заказать</button>
+            </article>
+
+            <article class="product-card product-card--featured" id="product-7" data-category="audio" data-price="2400">
+              <span class="product-card__badge">Хит</span>
+              <div class="product-card__img" aria-hidden="true">🔊</div>
+              <p class="product-card__category">Аудио</p>
+              <h3 class="product-card__title">Портативная колонка</h3>
+              <p class="product-card__description">Компактная Bluetooth-колонка с аккумулятором для музыки и подкастов.</p>
+              <p class="product-card__price">2 400 руб.</p>
+              <button class="button button--primary product-card__button" type="button" data-product="Портативная колонка">Заказать</button>
+            </article>
+
+            <article class="product-card" id="product-8" data-category="audio" data-price="3900">
+              <div class="product-card__img" aria-hidden="true">🎙️</div>
+              <p class="product-card__category">Аудио</p>
+              <h3 class="product-card__title">Настольный микрофон</h3>
+              <p class="product-card__description">USB-микрофон с подставкой и кнопкой отключения звука.</p>
+              <p class="product-card__price">3 900 руб.</p>
+              <button class="button button--primary product-card__button" type="button" data-product="Настольный микрофон">Заказать</button>
+            </article>
+
+            <article class="product-card product-card--new" id="product-9" data-category="workspace" data-price="2100">
+              <span class="product-card__badge">Новинка</span>
+              <div class="product-card__img" aria-hidden="true">💻</div>
+              <p class="product-card__category">Рабочее место</p>
+              <h3 class="product-card__title">Подставка для ноутбука</h3>
+              <p class="product-card__description">Складная подставка с регулировкой наклона и мягкими накладками.</p>
+              <p class="product-card__price">2 100 руб.</p>
+              <button class="button button--primary product-card__button" type="button" data-product="Подставка для ноутбука">Заказать</button>
+            </article>
+
+            <article class="product-card product-card--discount" id="product-10" data-category="workspace" data-price="1700">
+              <span class="product-card__badge">−15%</span>
+              <div class="product-card__img" aria-hidden="true">💡</div>
+              <p class="product-card__category">Рабочее место</p>
+              <h3 class="product-card__title">Настольная лампа</h3>
+              <p class="product-card__description">Три режима освещения и гибкая ножка для удобной работы за столом.</p>
+              <p class="product-card__old-price">Раньше: <del>2 000 руб.</del></p>
+              <p class="product-card__price">1 700 руб.</p>
+              <button class="button button--primary product-card__button" type="button" data-product="Настольная лампа">Заказать</button>
+            </article>
+
+            <article class="product-card" id="product-11" data-category="workspace" data-price="650">
+              <div class="product-card__img" aria-hidden="true">🗂️</div>
+              <p class="product-card__category">Рабочее место</p>
+              <h3 class="product-card__title">Органайзер для стола</h3>
+              <p class="product-card__description">Отделения для ручек, заметок и мелочей, которые хочется держать под рукой.</p>
+              <p class="product-card__price">650 руб.</p>
+              <button class="button button--primary product-card__button" type="button" data-product="Органайзер для стола">Заказать</button>
+            </article>
+
+            <article class="product-card" id="product-12" data-category="workspace" data-price="800">
+              <div class="product-card__img" aria-hidden="true">⌨️</div>
+              <p class="product-card__category">Рабочее место</p>
+              <h3 class="product-card__title">Подставка под запястья</h3>
+              <p class="product-card__description">Мягкая опора перед клавиатурой с нескользящим основанием.</p>
+              <p class="product-card__price">800 руб.</p>
+              <button class="button button--primary product-card__button" type="button" data-product="Подставка под запястья">Заказать</button>
             </article>
           </div>
+          <div class="catalog-products__empty" id="catalog-empty" hidden>
+            <h3 class="catalog-products__empty-title">Ничего не найдено</h3>
+            <p>Попробуйте изменить запрос, выбрать другую категорию или расширить диапазон цен.</p>
+            <button class="button button--secondary" type="reset" form="catalog-filters">Сбросить фильтры</button>
+          </div>
         </section>
+      </div>
+
+      <section class="faq section" id="faq" aria-labelledby="faq-title">
+        <h2 class="section__title" id="faq-title">Часто задаваемые вопросы</h2>
+        <p class="section__text">О выборе товаров и оформлении учебной заявки.</p>
+        <details class="faq__item">
+          <summary class="faq__question">Как найти нужный товар?</summary>
+          <div class="faq__answer"><p>Введите название или слово из описания, отметьте категории и при необходимости укажите цену. Нажмите «Применить». Можно выбрать несколько категорий; если не отмечена ни одна, поиск идёт по всем товарам.</p></div>
+        </details>
+        <details class="faq__item">
+          <summary class="faq__question">Как оформить заявку?</summary>
+          <div class="faq__answer"><p>Нажмите «Заказать» в карточке товара. В открывшейся форме проверьте выбранный товар, заполните обязательные поля и нажмите «Отправить заявку».</p></div>
+        </details>
+        <details class="faq__item">
+          <summary class="faq__question">Что означают отметки на карточках?</summary>
+          <div class="faq__answer"><p>«Хит» отмечает популярные товары, «Новинка» — новые поступления. На карточках со скидкой указаны её размер, прежняя и текущая цены. При фильтрации и сортировке используется текущая цена.</p></div>
+        </details>
+        <details class="faq__item">
+          <summary class="faq__question">Можно ли оплатить товар и заказать доставку?</summary>
+          <div class="faq__answer"><p>Это учебный магазин: оплата и доставка не выполняются. Форма демонстрирует оформление заявки, а введённые данные не отправляются на сервер.</p></div>
+        </details>
+        <details class="faq__item">
+          <summary class="faq__question">Как убрать все ограничения поиска?</summary>
+          <div class="faq__answer"><p>Нажмите «Сбросить фильтры». Поиск и поля цены очистятся, отметки категорий снимутся, а каталог вернётся к исходному порядку товаров.</p></div>
+        </details>
+        <details class="faq__item">
+          <summary class="faq__question">Где найти контактную информацию?</summary>
+          <div class="faq__answer"><p>Перейдите на страницу <a href="contacts.html">«Контакты»</a>. Там размещены демонстрационные контакты магазина и раздел обратной связи.</p></div>
+        </details>
       </section>
     </main>
+
+    <dialog
+      class="order-dialog"
+      id="order-dialog"
+      aria-labelledby="order-dialog-title"
+    >
+      <h2 class="order-dialog__title" id="order-dialog-title">
+        Оформление заявки
+      </h2>
+
+      <p class="order-dialog__product" id="order-product-name"></p>
+
+      <form
+        class="order-form"
+        id="order-form"
+        action="#"
+        method="post"
+        novalidate
+      >
+        <input id="selected-product" name="selected-product" type="hidden" />
+
+        <div class="order-form__field">
+          <label class="order-form__label" for="order-name">Имя</label>
+          <input
+            class="order-form__input"
+            id="order-name"
+            name="name"
+            type="text"
+            required
+          />
+        </div>
+
+        <div class="order-form__field">
+          <label class="order-form__label" for="order-email">E-mail</label>
+          <input
+            class="order-form__input"
+            id="order-email"
+            name="email"
+            type="email"
+            required
+          />
+        </div>
+
+        <div class="order-form__field">
+          <label class="order-form__label" for="order-phone">Телефон</label>
+          <input
+            class="order-form__input"
+            id="order-phone"
+            name="phone"
+            type="tel"
+            inputmode="tel"
+            placeholder="+7 (900) 000-00-00"
+            pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$"
+            required
+          />
+          <small class="order-form__hint">Формат: +7 (900) 000-00-00</small>
+        </div>
+
+        <div class="order-form__field">
+          <label class="order-form__label" for="order-date">Дата связи</label>
+          <input class="order-form__input" id="order-date" name="date" type="date" />
+        </div>
+
+        <div class="order-form__field">
+          <label class="order-form__label" for="order-topic">Тема заявки</label>
+          <select class="order-form__select" id="order-topic" name="topic" required>
+            <option value="">Выберите тему</option>
+            <option value="product">Заказ товара</option>
+            <option value="consultation">Консультация</option>
+            <option value="delivery">Доставка</option>
+          </select>
+        </div>
+
+        <div class="order-form__field">
+          <label class="order-form__label" for="order-comment">Комментарий</label>
+          <textarea
+            class="order-form__textarea"
+            id="order-comment"
+            name="comment"
+            rows="4"
+            placeholder="Укажите дополнительную информацию"
+          ></textarea>
+        </div>
+
+        <div class="order-form__field order-form__field--checkbox">
+          <label class="order-form__checkbox-label">
+            <input
+              class="order-form__checkbox"
+              id="order-agreement"
+              name="agreement"
+              type="checkbox"
+              required
+            />
+            Я согласен на обработку данных
+          </label>
+        </div>
+
+        <div class="order-form__actions">
+          <button
+            class="button button--secondary"
+            type="button"
+            id="close-order-dialog"
+          >
+            Закрыть
+          </button>
+          <button class="button button--primary" type="submit">
+            Отправить заявку
+          </button>
+        </div>
+      </form>
+    </dialog>
+
+    <p class="success-message" id="success-message" role="status" hidden>
+      Учебная заявка заполнена. Данные не отправляются на сервер.
+    </p>
 
     <footer class="site-footer">
       <p class="site-footer__text">&copy; 2026 Учебный проект. Все права защищены.</p>

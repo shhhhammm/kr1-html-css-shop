@@ -1,6 +1,6 @@
 const orderDialog = document.getElementById("order-dialog");
 
-const orderButtons = document.querySelectorAll(".product-card__button");
+const orderButtons = document.querySelectorAll(".product-card__button[data-product]");
 
 const closeDialogButton = document.getElementById("close-order-dialog");
 
@@ -12,6 +12,7 @@ orderButtons.forEach((button) => {
 
     successMessage.hidden = true;
     selectedProductInput.value = productName;
+    document.getElementById("order-product-name").textContent = `Товар: ${productName}`;
 
     orderDialog.showModal();
   });
