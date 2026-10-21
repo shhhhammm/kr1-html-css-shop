@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Периферия для учёбы и работы: мыши, клавиатуры, коврики, веб-камеры и USB-разветвители."
+    />
+    <title>Периферия — ShopProject</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/main.js" defer></script>
+    <script src="js/catalog.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Перейти к содержимому</a>
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="site-header__logo" href="index.html">ShopProject</a>
+
+        <nav class="site-nav" aria-label="Основная навигация">
+          <ul class="site-nav__list">
+            <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
+            <li class="site-nav__item"><a class="site-nav__link" href="catalog.html">Каталог</a></li>
+            <li class="site-nav__item"><a class="site-nav__link site-nav__link--active" href="category.html" aria-current="page">Периферия</a></li>
+            <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
+            <li class="site-nav__item"><a class="site-nav__link" href="index.html#advantages">Преимущества</a></li>
+            <li class="site-nav__item"><a class="site-nav__link" href="index.html#popular">Популярные товары</a></li>
+            <li class="site-nav__item"><a class="site-nav__link" href="contacts.html#feedback">Обратная связь</a></li>
+            <li class="site-nav__item"><a class="site-nav__link" href="catalog.html#faq">Вопросы и ответы</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content" tabindex="-1">
+      <nav class="breadcrumbs" aria-label="Хлебные крошки">
+        <a class="breadcrumbs__link" href="index.html">Главная</a>
+        <a class="breadcrumbs__link breadcrumbs__link--nested" href="catalog.html">Каталог</a>
+        <span class="breadcrumbs__current" aria-current="page">Периферия</span>
+      </nav>
+
+      <section class="section category-intro">
+        <p class="category-intro__eyebrow">Для учёбы и работы</p>
+        <h1 class="section__title" id="catalog-title">Периферия</h1>
+        <p class="section__text">
+          Мыши, клавиатуры и полезные аксессуары для вашего компьютера. Пять товаров, которые помогут обустроить удобное рабочее место.
+        </p>
+      </section>
+
+      <div class="catalog-layout">
+        <aside class="catalog-filters" aria-labelledby="filters-title">
+          <h2 class="catalog-filters__title" id="filters-title">Фильтры</h2>
+          <form class="filters-form" id="catalog-filters" action="category.html" method="get" novalidate>
+            <div>
+              <label class="filters-form__label" for="product-search">Поиск товара</label>
+              <input class="filters-form__input" id="product-search" name="search" type="search" placeholder="Название или описание" />
+            </div>
+            <fieldset class="filters-form__fieldset">
+              <legend class="filters-form__legend">Цена, руб.</legend>
+              <div class="filters-form__range">
+                <div>
+                  <label class="filters-form__label" for="price-from">От</label>
+                  <input class="filters-form__input" id="price-from" name="price-from" type="number" min="0" step="1" placeholder="0" />
+                </div>
+                <div>
+                  <label class="filters-form__label" for="price-to">До</label>
+                  <input class="filters-form__input" id="price-to" name="price-to" type="number" min="0" step="1" placeholder="Любая" />
+                </div>
+              </div>
+            </fieldset>
+            <button class="button button--primary" type="submit">Применить</button>
+            <button class="button button--secondary" type="reset">Сбросить фильтры</button>
+          </form>
+        </aside>
+
+        <section class="catalog-products" aria-labelledby="products-title">
+          <div class="catalog-products__toolbar">
+            <div>
+              <h2 class="catalog-products__title" id="products-title">Товары категории</h2>
+              <p class="catalog-products__count" id="products-count" role="status" aria-live="polite" aria-atomic="true">Показано: 5 из 5</p>
+            </div>
+            <div class="catalog-products__sorting">
+              <label class="filters-form__label" for="product-sort">Сортировка</label>
+              <select class="filters-form__input" id="product-sort">
+                <option value="default">По умолчанию</option>
+                <option value="price-asc">Сначала дешевле</option>
+                <option value="price-desc">Сначала дороже</option>
+                <option value="name">По названию</option>
+              </select>
+            </div>
+          </div>
+          <div class="products-grid" id="catalog-grid">
+            <article class="product-card product-card--featured" id="product-1" data-category="peripherals" data-price="1000">
+              <span class="product-card__badge">Хит</span>
+              <div class="product-card__media">
+                <img class="product-card__img" src="images/mouse.webp" width="800" height="600" alt="Чёрная беспроводная компьютерная мышь" loading="lazy" decoding="async" />
+                <span class="product-card__fallback" hidden>Фотография временно недоступна</span>
+              </div>
+              <p class="product-card__category"><a href="category.html">Периферия</a></p>
+              <h3 class="product-card__title">Беспроводная мышь</h3>
+              <p class="product-card__description">Тихие кнопки, три режима чувствительности и USB-приёмник для ноутбука.</p>
+              <p class="product-card__price">1 000 руб.</p>
+              <button class="button button--primary product-card__button" type="button" data-product="Беспроводная мышь" aria-haspopup="dialog" aria-controls="order-dialog" aria-label="Заказать: Беспроводная мышь">Заказать</button>
+            </article>
+
+            <article class="product-card product-card--new" id="product-2" data-category="peripherals" data-price="1500">
+              <span class="product-card__badge">Новинка</span>
+              <div class="product-card__media">
+                <img class="product-card__img" src="images/keyboard.webp" width="800" height="450" alt="Компактная чёрная клавиатура" loading="lazy" decoding="async" />
+                <span class="product-card__fallback" hidden>Фотография временно недоступна</span>
+              </div>
+              <p class="product-card__category"><a href="category.html">Периферия</a></p>
+              <h3 class="product-card__title">Компактная клавиатура</h3>
+              <p class="product-card__description">Проводная клавиатура с русской раскладкой и компактным корпусом.</p>
+              <p class="product-card__price">1 500 руб.</p>
+              <button class="button button--primary product-card__button" type="button" data-product="Компактная клавиатура" aria-haspopup="dialog" aria-controls="order-dialog" aria-label="Заказать: Компактная клавиатура">Заказать</button>
+            </article>
+
+            <article class="product-card" id="product-4" data-category="peripherals" data-price="450">
+              <div class="product-card__media">
+                <img class="product-card__img" src="images/mousepad.webp" width="800" height="554" alt="Прямоугольный коврик под компьютерной мышью" loading="lazy" decoding="async" />
+                <span class="product-card__fallback" hidden>Фотография временно недоступна</span>
+              </div>
+              <p class="product-card__category"><a href="category.html">Периферия</a></p>
+              <h3 class="product-card__title">Коврик для мыши</h3>
+              <p class="product-card__description">Тканевая поверхность 30 × 25 см и нескользящее резиновое основание.</p>
+              <p class="product-card__price">450 руб.</p>
+              <button class="button button--primary product-card__button" type="button" data-product="Коврик для мыши" aria-haspopup="dialog" aria-controls="order-dialog" aria-label="Заказать: Коврик для мыши">Заказать</button>
+            </article>
+
+            <article class="product-card product-card--new" id="product-5" data-category="peripherals" data-price="3200">
+              <span class="product-card__badge">Новинка</span>
+              <div class="product-card__media">
+                <img class="product-card__img" src="images/webcam.webp" width="681" height="600" alt="Веб-камера на креплении для монитора" loading="lazy" decoding="async" />
+                <span class="product-card__fallback" hidden>Фотография временно недоступна</span>
+              </div>
+              <p class="product-card__category"><a href="category.html">Периферия</a></p>
+              <h3 class="product-card__title">Веб-камера Full HD</h3>
+              <p class="product-card__description">Видео 1080p, встроенный микрофон и крепление на монитор.</p>
+              <p class="product-card__price">3 200 руб.</p>
+              <button class="button button--primary product-card__button" type="button" data-product="Веб-камера Full HD" aria-haspopup="dialog" aria-controls="order-dialog" aria-label="Заказать: Веб-камера Full HD">Заказать</button>
+            </article>
+
+            <article class="product-card" id="product-6" data-category="peripherals" data-price="1800">
+              <div class="product-card__media">
+                <img class="product-card__img" src="images/usb-hub.webp" width="800" height="600" alt="USB-разветвитель для подключения периферии" loading="lazy" decoding="async" />
+                <span class="product-card__fallback" hidden>Фотография временно недоступна</span>
+              </div>
+              <p class="product-card__category"><a href="category.html">Периферия</a></p>
+              <h3 class="product-card__title">USB-разветвитель</h3>
+              <p class="product-card__description">Четыре USB-порта для подключения периферии к одному разъёму.</p>
+              <p class="product-card__price">1 800 руб.</p>
+              <button class="button button--primary product-card__button" type="button" data-product="USB-разветвитель" aria-haspopup="dialog" aria-controls="order-dialog" aria-label="Заказать: USB-разветвитель">Заказать</button>
+            </article>
+
+          </div>
+          <div class="catalog-products__empty" id="catalog-empty" hidden>
+            <h3 class="catalog-products__empty-title">Ничего не найдено</h3>
+            <p>Попробуйте изменить запрос или расширить диапазон цен.</p>
+            <button class="button button--secondary" type="reset" form="catalog-filters">Сбросить фильтры</button>
+          </div>
+        </section>
+      </div>
+
+      <p class="section"><a href="catalog.html">← Посмотреть все категории</a></p>
+      <p class="section image-note">Фотографии иллюстрируют тип товара. Описания и цены приведены для учебного примера.</p>
+    </main>
+
+    <dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog-title" aria-describedby="order-dialog-description">
+      <div class="order-dialog__header">
+        <h2 class="order-dialog__title" id="order-dialog-title" tabindex="-1" autofocus>Оформление заявки</h2>
+        <button class="order-dialog__close" type="button" data-close-dialog aria-label="Закрыть окно заявки">×</button>
+      </div>
+      <p class="order-dialog__description" id="order-dialog-description">Заполните форму, чтобы подготовить учебную заявку. Данные не отправляются на сервер.</p>
+      <div class="order-dialog__product">
+        <p id="order-product-name"></p>
+        <p class="order-dialog__price" id="order-product-price"></p>
+      </div>
+      <form class="order-form" id="order-form" action="#" method="post" novalidate>
+        <p class="order-form__hint">Поля со звёздочкой (*) обязательны.</p>
+        <p class="order-form__summary" id="order-errors" role="alert" aria-atomic="true"></p>
+        <input id="selected-product" name="selected-product" type="hidden" />
+        <div class="order-form__grid">
+          <div class="order-form__field">
+            <label class="order-form__label" for="order-name">Имя <span aria-hidden="true">*</span></label>
+            <input class="order-form__input" id="order-name" name="name" type="text" autocomplete="name" maxlength="80" required aria-describedby="order-name-hint order-name-error" />
+            <small class="order-form__hint" id="order-name-hint">Например, Анна</small>
+            <span class="order-form__error" id="order-name-error"></span>
+          </div>
+          <div class="order-form__field">
+            <label class="order-form__label" for="order-email">E-mail <span aria-hidden="true">*</span></label>
+            <input class="order-form__input" id="order-email" name="email" type="email" autocomplete="email" maxlength="120" required aria-describedby="order-email-hint order-email-error" />
+            <small class="order-form__hint" id="order-email-hint">Например, anna@example.com</small>
+            <span class="order-form__error" id="order-email-error"></span>
+          </div>
+          <div class="order-form__field">
+            <label class="order-form__label" for="order-phone">Телефон <span aria-hidden="true">*</span></label>
+            <input class="order-form__input" id="order-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="30" required aria-describedby="order-phone-hint order-phone-error" />
+            <small class="order-form__hint" id="order-phone-hint">Можно ввести +7 (900) 123-45-67, +79001234567 или 89001234567.</small>
+            <span class="order-form__error" id="order-phone-error"></span>
+          </div>
+          <div class="order-form__field">
+            <label class="order-form__label" for="order-date">Дата связи (необязательно)</label>
+            <input class="order-form__input" id="order-date" name="date" type="date"  aria-describedby="order-date-hint order-date-error" />
+            <small class="order-form__hint" id="order-date-hint">Необязательно. Выберите сегодня или более позднюю дату.</small>
+            <span class="order-form__error" id="order-date-error"></span>
+          </div>
+        </div>
+        <div class="order-form__field">
+          <label class="order-form__label" for="order-topic">Тема заявки <span aria-hidden="true">*</span></label>
+          <select class="order-form__select" id="order-topic" name="topic" required aria-describedby="order-topic-error">
+            <option value="">Выберите тему</option>
+            <option value="product" selected>Заказ товара</option>
+            <option value="consultation">Консультация</option>
+            <option value="delivery">Доставка</option>
+          </select>
+          <span class="order-form__error" id="order-topic-error"></span>
+        </div>
+        <div class="order-form__field">
+          <label class="order-form__label" for="order-comment">Комментарий (необязательно)</label>
+          <textarea class="order-form__textarea" id="order-comment" name="comment" rows="3" maxlength="1000" aria-describedby="order-comment-hint"></textarea>
+          <small class="order-form__hint" id="order-comment-hint">Дополнительные пожелания, до 1 000 символов.</small>
+        </div>
+        <div class="order-form__field">
+          <label class="order-form__checkbox-label" for="order-agreement">
+            <input class="order-form__checkbox" id="order-agreement" name="agreement" type="checkbox" required aria-describedby="order-agreement-error" />
+            <span>Я согласен на обработку данных <span aria-hidden="true">*</span></span>
+          </label>
+          <span class="order-form__error" id="order-agreement-error"></span>
+        </div>
+        <div class="order-form__actions">
+          <button class="button button--secondary" type="button" id="close-order-dialog" data-close-dialog>Отмена</button>
+          <button class="button button--primary" type="submit">Отправить заявку</button>
+        </div>
+      </form>
+      <div class="order-dialog__success" id="order-success" hidden>
+        <h3 id="success-message" tabindex="-1">Учебная заявка заполнена</h3>
+        <p>Все поля заполнены верно. Данные не отправлены на сервер; заказ и оплата не выполняются.</p>
+        <button class="button button--primary" type="button" data-close-dialog>Вернуться к товарам</button>
+      </div>
+    </dialog>
+
+    <footer class="site-footer">
+      <p class="site-footer__text">&copy; 2026 Учебный проект. Все права защищены.</p>
+      <p class="site-footer__text">Дисциплина: Фронтенд и бэкенд разработка</p>
+    </footer>
+  </body>
+</html>
