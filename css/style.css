@@ -127,6 +127,9 @@ a:focus-visible {
    =============================== */
 
 .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
   background-color: var(--color-surface);
 }
 
@@ -330,10 +333,10 @@ a:focus-visible {
 .catalog-filters {
   grid-area: filters;
   position: sticky;
-  top: var(--space-md);
+  top: calc(var(--site-header-height, 0px) + var(--space-md));
   align-self: start;
-  max-height: calc(100vh - 32px);
-  max-height: calc(100dvh - 32px);
+  max-height: calc(100vh - var(--site-header-height, 0px) - 32px);
+  max-height: calc(100dvh - var(--site-header-height, 0px) - 32px);
   overflow-y: auto;
   padding: var(--space-md);
   border: 1px solid var(--color-border);
@@ -636,6 +639,7 @@ a:focus-visible {
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--site-header-height, 0px) + var(--space-md));
 }
 
 :target {

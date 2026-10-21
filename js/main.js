@@ -1,3 +1,14 @@
+// Учитываем переносы меню при изменении ширины окна и масштаба.
+const siteHeader = document.querySelector('.site-header');
+
+if (siteHeader) {
+  const updateHeaderHeight = () => {
+    document.documentElement.style.setProperty('--site-header-height', `${siteHeader.getBoundingClientRect().height}px`);
+  };
+  updateHeaderHeight();
+  new ResizeObserver(updateHeaderHeight).observe(siteHeader);
+}
+
 // Локальные фотографии не меняют размеры карточки даже при ошибке загрузки.
 document.querySelectorAll('.product-card__img').forEach((image) => {
   function showImageFallback() {
